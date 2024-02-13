@@ -2,6 +2,7 @@ package com.nst.pruebas
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -71,7 +72,7 @@ fun Greeting(name: String) {
     val image3 = (R.drawable.solo_campo)
     val image4 = (R.drawable.tractor)
 
-    var nombre by remember {
+    var contraseña by remember {
         mutableStateOf("")
     }
 
@@ -121,11 +122,7 @@ fun Greeting(name: String) {
             ) {
                 Text("Pulsa para cambiar el fondo")
             }
-            TextField(
-                value = nombre,
-                onValueChange = {nombre=it},
-                label = {Text("Inserta tu nombre" )}
-            )
+
             TextField(
                 value = email,
                 onValueChange = {email=it},
@@ -135,14 +132,26 @@ fun Greeting(name: String) {
                 )
             )
 
+            TextField(
+                value = contraseña,
+                onValueChange = {contraseña=it},
+                label = {Text("Inserta tu contraseña" )},
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    keyboardType = KeyboardType.Password
+                )
+            )
             val contexto = LocalContext.current
             val intent_segunda = Intent(contexto, segunda::class.java)
 
-            intent_segunda.putExtra("nombre",nombre)
             intent_segunda.putExtra("email",email)
+            intent_segunda.putExtra("contraseña",contraseña)
+
 
             Button(onClick = {
-                contexto.startActivity(intent_segunda)
+                if(email == "admin@admin.com" && contraseña == "123"){
+                    contexto.startActivity(intent_segunda)
+                }else{ Toast.makeText(contexto, "Cosas pasan", Toast.LENGTH_LONG).show()
+                }
             }) {
                 Text("Segunda")
             }

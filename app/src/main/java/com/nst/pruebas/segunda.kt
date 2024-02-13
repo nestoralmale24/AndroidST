@@ -17,14 +17,15 @@ class segunda : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var nombre : String? = intent.getStringExtra("nombre")
         var email : String? = intent.getStringExtra("email")
+        var contraseña : String? = intent.getStringExtra("contraseña")
+
 
         if(email == null){
             email = "no hay"
         }
-        if(nombre == null){
-            nombre = "no hay"
+        if(contraseña == null){
+            contraseña = "no hay"
         }
         setContent {
             PruebasTheme {
@@ -33,7 +34,7 @@ class segunda : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting2(nombre, email)
+                    Greeting2(email, contraseña)
                 }
             }
         }
@@ -41,10 +42,10 @@ class segunda : ComponentActivity() {
 }
 
 @Composable
-fun Greeting2(nombre: String, email: String ) {
+fun Greeting2(email: String, contraseña: String ) {
     Column() {
-        Text(text = nombre)
         Text(text = email)
+        Text(text = contraseña)
     }
 }
 
