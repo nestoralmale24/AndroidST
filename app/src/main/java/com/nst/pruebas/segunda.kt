@@ -3,6 +3,7 @@ package com.nst.pruebas
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,10 +18,13 @@ class segunda : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         var nombre : String? = intent.getStringExtra("nombre")
-        var email = intent.getStringExtra("email")
+        var email : String? = intent.getStringExtra("email")
 
+        if(email == null){
+            email = "no hay"
+        }
         if(nombre == null){
-
+            nombre = "no hay"
         }
         setContent {
             PruebasTheme {
@@ -29,7 +33,7 @@ class segunda : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting2("Android")
+                    Greeting2(nombre, email)
                 }
             }
         }
@@ -37,17 +41,17 @@ class segunda : ComponentActivity() {
 }
 
 @Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Greeting2(nombre: String, email: String ) {
+    Column() {
+        Text(text = nombre)
+        Text(text = email)
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview2() {
     PruebasTheme {
-        Greeting2("Android")
+        Greeting2("A", "B")
     }
 }
