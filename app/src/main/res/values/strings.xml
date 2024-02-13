@@ -3,5 +3,6 @@
     <string name="hola">Hola</string>
     <string name="adios">Adios</string>
     <string name="title_activity_segunda">segunda</string>
+    <string name="title_activity_pokemon">PokemonActivity</string>
 
 </resources>
