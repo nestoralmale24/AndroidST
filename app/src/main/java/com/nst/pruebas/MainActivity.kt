@@ -1,5 +1,6 @@
 package com.nst.pruebas
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -62,7 +63,7 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Greeting(name: String) {
+fun Greeting(email: String) {
 
     var fot by remember { mutableStateOf(R.drawable.c)}
     var imagenTotal = painterResource(fot)
@@ -93,21 +94,6 @@ fun Greeting(name: String) {
                 .padding(8.dp)
                 .fillMaxSize(),
         ) {
-            Text(
-                text = stringResource(R.string.hola),
-                color = Color.White,
-                modifier = Modifier.padding(15.dp),
-                fontSize = 30.sp,
-                textAlign = TextAlign.Center
-            )
-
-            Text(
-                text = stringResource(R.string.adios),
-                color = Color.White,
-                modifier = Modifier.padding(15.dp),
-                fontSize = 30.sp,
-                textAlign = TextAlign.Center
-            )
 
             Button(
                 onClick = {
@@ -132,6 +118,7 @@ fun Greeting(name: String) {
                 )
             )
 
+
             TextField(
                 value = contraseña,
                 onValueChange = {contraseña=it},
@@ -146,6 +133,24 @@ fun Greeting(name: String) {
             intent_segunda.putExtra("email",email)
             intent_segunda.putExtra("contraseña",contraseña)
 
+            val intent_pokemon = Intent(contexto, PokemonActivity:: class.java)
+            Button(onClick = {
+                contexto.startActivity(intent_pokemon)
+            }, modifier = Modifier.padding(20.dp)) {
+                Text("Pokemon")
+            }
+
+            val sp = contexto.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val editor = sp.edit()
+
+            Button(onClick = {
+                editor.putString("email", email)
+                editor.putString("contraseña", contraseña)
+                editor.commit()
+            }) {
+                Text("guardar info")
+            }
+
 
             Button(onClick = {
                 if(email == "admin@admin.com" && contraseña == "123"){
@@ -153,7 +158,14 @@ fun Greeting(name: String) {
                 }else{ Toast.makeText(contexto, "Cosas pasan", Toast.LENGTH_LONG).show()
                 }
             }) {
-                Text("Segunda")
+                Text("Iniciar Sesion")
+            }
+
+            Button(onClick = {
+                val intent = Intent(contexto, LoginFirebase::class.java)
+                contexto.startActivity(intent)
+            }) {
+                Text("IR A LA PAGINA PRINCIPAL")
             }
         }
     }

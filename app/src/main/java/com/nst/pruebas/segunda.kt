@@ -1,15 +1,19 @@
 package com.nst.pruebas
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.nst.pruebas.ui.theme.PruebasTheme
 
@@ -27,14 +31,14 @@ class segunda : ComponentActivity() {
         if(contraseña == null){
             contraseña = "no hay"
         }
+
         setContent {
             PruebasTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting2(email, contraseña)
+                    Greeting2()
                 }
             }
         }
@@ -42,10 +46,26 @@ class segunda : ComponentActivity() {
 }
 
 @Composable
-fun Greeting2(email: String, contraseña: String ) {
+fun Greeting2() {
+
+    val context = LocalContext.current
+    val sp = context.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+    var email : String? = sp.getString("email", "")
+    var contraseña : String? = sp.getString("contraseña", "")
+
+    if(email == null){
+        email = "no hay"
+    }
+    if(contraseña == null){
+        contraseña = "no hay"
+    }
+
     Column() {
         Text(text = email)
         Text(text = contraseña)
+        Button(onClick = {}) {
+            Toast.makeText(context, "cosas pasan", Toast.LENGTH_LONG).show()
+        }
     }
 }
 
@@ -53,6 +73,6 @@ fun Greeting2(email: String, contraseña: String ) {
 @Composable
 fun GreetingPreview2() {
     PruebasTheme {
-        Greeting2("A", "B")
+        Greeting2()
     }
 }

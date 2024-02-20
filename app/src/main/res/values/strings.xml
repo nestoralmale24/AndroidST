@@ -4,5 +4,6 @@
     <string name="adios">Adios</string>
     <string name="title_activity_segunda">segunda</string>
     <string name="title_activity_pokemon">PokemonActivity</string>
+    <string name="title_activity_login_firebase">LoginFirebase</string>
 
 </resources>

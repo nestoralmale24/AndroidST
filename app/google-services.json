@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "622919901510",
+    "project_id": "loginzgz",
+    "storage_bucket": "loginzgz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622919901510:android:f542c824547a2159934547",
+        "android_client_info": {
+          "package_name": "com.nst.pruebas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRSKDhmzVZxU2icgCsLJEr_lHGh5oIBhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
