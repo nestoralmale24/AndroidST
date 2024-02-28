@@ -6,15 +6,13 @@
 
 ### General Info
 ***
-This project consists of a series of interfaces and customer and order management processes in a company.
-In this we must enter with our admin user and from there manage our clients, products and orders
+Login and API exercise in kotlin and android studio
 
 ## Technologies
 ***
 A list of technologies used within the project:
-* [Java](https://www.java.com/es/): Version 21.0 
-* [NetBeans](https://netbeans.apache.org/front/main/): Version 19.0
-* [MySql WorkBench](https://dev.mysql.com/downloads/workbench/): Version 8.0 CE
+* [Kotlin](https://kotlinlang.org/): Version 1.9.22
+* [NetBeans](https://developer.android.com/?hl=es-419): Version 2023.1.1.28
   
 ## Collaboration
 ***
